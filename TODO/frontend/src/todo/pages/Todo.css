@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+  .todo-list {
+    display: flex;
+    flex-wrap: wrap; /* Enable wrapping of flex items */
+    justify-content: center; /* Center items horizontally */
+    align-items: flex-start; /* Align items at the top */
+    width: 100%;
+    max-width: 3000px; /* Limit the width of the todo list */
+    padding: 10px;
+  }

@@ -1,0 +1,117 @@
+/* TodoItem.css */
+
+
+  .todo-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 300px; /* Set a max-width for better responsiveness */
+    flex: 1 1 calc(33.333% - 30px); /* Flex-grow, flex-shrink, flex-basis */
+  }
+  
+  .todo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .todo-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .todo-description,
+  .todo-date,
+  .todo-priority,
+  .todo-status {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .todo-text {
+    margin-left: 8px; /* Add margin between icon and text */
+  }
+  
+  .todo-priority {
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .todo-status.completed {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .todo-status.not-completed {
+    color: #dc3545;
+    font-weight: bold;
+  }
+  
+  .todo-actions {
+    display: flex;
+    flex-direction: column; /* Stack the action buttons vertically */
+    margin-top: 15px;
+  }
+  
+  .todo-action-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px; /* Add space between buttons */
+  }
+  
+  .todo-action-btn i {
+    margin-right: 5px;
+  }
+  
+  .complete-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .complete-btn:hover {
+    background-color: #218838;
+  }
+  
+  .edit-btn {
+    background-color: #ffc107;
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background-color: #e0a800;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* Priority based colors */
+  .todo-item.Low {
+    background-color: #e0f7fa;
+  }
+  
+  .todo-item.Medium {
+    background-color: #ffe0b2;
+  }
+  
+  .todo-item.High {
+    background-color: #ffcdd2;
+  }
+  
