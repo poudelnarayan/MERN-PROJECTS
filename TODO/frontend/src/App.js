@@ -47,6 +47,9 @@ const DummyTasks = [
 ];
 
 function App() {
+  const [recentlyDeletedTask, setRecentlyDeletedTask] = useState(null);
+  const [undoTimeout, setUndoTimeout] = useState(null);
+
   const [activeTasks, setActiveTasks] = useState(
     DummyTasks.filter((item) => !item.isCompleted)
   );
@@ -89,8 +92,39 @@ function App() {
   };
 
   const handleDelete = (id) => {
+    const taskToDelete =
+      activeTasks.find((task) => task.id === id) ||
+      completedTasks.find((task) => task.id === id);
+
+    if (!taskToDelete) return;
+
+    setRecentlyDeletedTask(taskToDelete);
+
     setActiveTasks(activeTasks.filter((task) => task.id !== id));
     setCompletedTasks(completedTasks.filter((task) => task.id !== id));
+
+    if (undoTimeout) clearTimeout(undoTimeout);
+
+    const timeout = setTimeout(() => {
+      setRecentlyDeletedTask(null);
+    }, 5000);
+
+    setUndoTimeout(timeout);
+  };
+
+  const handleUndelete = () => {
+    if (!recentlyDeletedTask) return;
+
+    if (recentlyDeletedTask.isCompleted) {
+      setCompletedTasks([...completedTasks, recentlyDeletedTask]);
+    } else {
+      setActiveTasks([...activeTasks, recentlyDeletedTask]);
+    }
+
+    setRecentlyDeletedTask(null);
+
+    if (undoTimeout) clearTimeout(undoTimeout);
+    setUndoTimeout(null);
   };
 
   return (
@@ -107,6 +141,7 @@ function App() {
               items={activeTasks}
               onDelete={handleDelete}
               onTaskComplete={handleTaskComplete}
+              onUndelete={handleUndelete}
             />
           }
         />
