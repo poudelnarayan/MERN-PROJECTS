@@ -6,7 +6,7 @@ import Card from "../../shared/components/Card";
 
 const TodoList = (props) => {
   return (
-    <div>
+    <div className="todo-container">
       {props.items.length === 0 && <Card message="No Tasks Found" />}
       <div className="todo-list">
         {props.items.map((item) => (
